@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState } from 'react'
 import {
     Sheet,
@@ -13,14 +14,15 @@ import Link from 'next/link'
 import { Button } from './ui/button'
 import { useQuery } from 'convex/react'
 import { api } from '../../convex/_generated/api'
-import { UserButton } from '@clerk/clerk-react'
+import { useConvexAuth } from "convex/react";
+import Notes from './Notes'
   
 
 type Props = {}
 
 function SideMenu({}: Props) {
     const [open, setOpen] = useState<boolean>(false)
-    const notes = useQuery(api.note.AllNotes)
+    const { isAuthenticated, isLoading } = useConvexAuth();
   return (
     <Sheet open={open} onOpenChange={() => setOpen(!open)}>
     <SheetTrigger className='p-2'>
@@ -38,9 +40,9 @@ function SideMenu({}: Props) {
                 </Link>
             </div>
         <SheetDescription>
-            {notes && notes.map((note, index) => (
-                <Link key={index} href={`/chat/${note._id}`} className='p-2 hover:bg-neutral-100 rounded-lg w-full block'>{note.title}</Link>
-            ))}
+            {isAuthenticated && (
+                <Notes/>
+            )}
         </SheetDescription>
         </SheetHeader>
         <SheetFooter>

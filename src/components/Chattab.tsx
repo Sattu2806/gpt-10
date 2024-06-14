@@ -6,7 +6,7 @@ import { Send } from 'lucide-react'
 import ChatMessages from './ChatMessages'
 import { Id } from '../../convex/_generated/dataModel'
 import useChat from '@/lib/use-chat-bot'
-import { useMutation } from 'convex/react'
+import { useConvexAuth, useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import { useRouter } from 'next/navigation'
 type Props = {
@@ -19,6 +19,7 @@ function Chattab({noteId}: Props) {
     const chat = useChat()
     const create = useMutation(api.note.createNote)
     const router = useRouter()
+    const { isAuthenticated, isLoading } = useConvexAuth();
 
 
     const AskBot = async () => {
@@ -52,7 +53,9 @@ function Chattab({noteId}: Props) {
   return (
     <div className='p-2 flex flex-col justify-between h-screen'>
         <div className='flex-grow overflow-auto max-w-screen-lg mx-auto w-full'>
-            <ChatMessages waitingresponse={waitingresponse} noteId={noteId as Id<'note'>} />
+            {isAuthenticated && (
+                <ChatMessages waitingresponse={waitingresponse} noteId={noteId as Id<'note'>} />
+            )}
         </div>
         <div className='flex items-center space-x-3 sticky bottom-0 p-3 max-w-screen-lg mx-auto w-full'>
             <div className={`focus:outline w-full border-[1px] rounded-3xl border-neutral-700 flex items-center spa2 px-3 bg-background ${waitingresponse ? "pointer-events-none":""} `}>

@@ -45,14 +45,18 @@ export const deleteNote = mutation ({
 
 
 export const AllNotes = query({
+    args:{
+        
+    },
     handler : async (ctx) => {
+        console.log("server identity", await ctx.auth.getUserIdentity());
         const identity = await ctx.auth.getUserIdentity()
 
         if(!identity) {
             throw new Error('Unathenticated')
         }
 
-        const userId = identity!.subject
+        const userId = identity.subject
 
         const notes = await ctx.db.query('note')
             .withIndex("by_user", (q) => q.eq("userId", userId))

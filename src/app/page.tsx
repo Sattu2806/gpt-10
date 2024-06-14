@@ -1,12 +1,18 @@
+'use client'
 import Chattab from "@/components/Chattab";
-import { Button } from "@/components/ui/button";
-import { UserButton } from "@clerk/nextjs";
-import Image from "next/image";
+import { SignInButton, UserButton } from "@clerk/clerk-react";
+import { Authenticated, Unauthenticated, useQuery } from "convex/react";
 
 export default function Home() {
   return (
     <div>
       <Chattab/>
+      {/* <Unauthenticated>
+        <SignInButton />
+      </Unauthenticated>
+      <Authenticated>
+        <UserButton />
+      </Authenticated> */}
     </div>
   );
 }
