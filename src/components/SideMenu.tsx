@@ -12,10 +12,11 @@ import {
   } from "@/components/ui/sheet"
 import Link from 'next/link'
 import { Button } from './ui/button'
-import { useQuery } from 'convex/react'
+import { Authenticated, useQuery } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import { useConvexAuth } from "convex/react";
 import Notes from './Notes'
+import { UserButton } from '@clerk/clerk-react'
   
 
 type Props = {}
@@ -46,6 +47,9 @@ function SideMenu({}: Props) {
         </SheetDescription>
         </SheetHeader>
         <SheetFooter>
+        <Authenticated>
+        <UserButton />
+      </Authenticated> 
             <Button className='w-full rounded-lg' variant='secondary'>Upgrade</Button>
         </SheetFooter>
     </SheetContent>

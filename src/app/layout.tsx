@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SideMenu from "@/components/SideMenu";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
-
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,8 +21,15 @@ export default function RootLayout({
     <html lang="en">
         <body className={inter.className}> 
         <ConvexClientProvider>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
           <SideMenu/>
           {children}
+          </ThemeProvider>
         </ConvexClientProvider>
         </body>
       </html>

@@ -33,8 +33,8 @@ function ChatMessages({waitingresponse, noteId}: Props) {
         key={index}
         className={`p-4 max-w-[90%]
           ${chat.by === 'user' ? 
-            "bg-secondary text-neutral-800 self-start rounded-tl-3xl rounded-tr-3xl rounded-br-3xl"
-            : "bg-primary-foreground text-blue-950 self-end rounded-bl-3xl rounded-tr-3xl rounded-tl-3xl"
+            "bg-secondary text-neutral-800 dark:text-neutral-400 self-start rounded-tl-3xl rounded-tr-3xl rounded-br-3xl"
+            : "bg-primary-foreground text-blue-950  dark:text-neutral-200 self-end rounded-bl-3xl rounded-tr-3xl rounded-tl-3xl"
           }
         `}
         >

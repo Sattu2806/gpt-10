@@ -12,7 +12,7 @@ function Notes({}: Props) {
   return (
     <div>
         {notes && notes.map((note, index) => (
-        <Link key={index} href={`/chat/${note._id}`} className='p-2 hover:bg-neutral-100 rounded-lg w-full block'>{note.title}</Link>
+        <Link key={index} href={`/chat/${note._id}`} className='p-2 hover:bg-neutral-100 dark:hover:bg-neutral-600 rounded-lg w-full block'>{note.title}</Link>
         ))}
     </div>
   )

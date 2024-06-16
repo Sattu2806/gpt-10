@@ -51,7 +51,7 @@ function Chattab({noteId}: Props) {
     }
 
   return (
-    <div className='p-2 flex flex-col justify-between h-screen'>
+    <div className='p-2 flex flex-col justify-between h-[95vh]'>
         <div className='flex-grow overflow-auto max-w-screen-lg mx-auto w-full'>
             {isAuthenticated && (
                 <ChatMessages waitingresponse={waitingresponse} noteId={noteId as Id<'note'>} />
@@ -72,7 +72,7 @@ function Chattab({noteId}: Props) {
              size='lg'
              disabled={waitingresponse} 
              onClick={() => {AskBot(); setInput('')}}
-             className='rounded-full p-2 w-9 h-9 aspect-square flex items-center text-slate-100'>
+             className='rounded-full p-2 w-9 h-9 aspect-square flex items-center text-slate-100 dark:bg-black dark:border'>
                 <Send className='size-5' strokeWidth={2}/>
             </Button>
         </div>
